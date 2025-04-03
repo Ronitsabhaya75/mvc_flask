@@ -1,8 +1,23 @@
+<!--
+View Layer (templates/index.html)
+--------------------------------
+This file acts as the View in our MVC pattern. It:
+1. Handles all presentation logic
+2. Displays data received from the Controller
+3. Provides user interface elements
+4. Contains all HTML, CSS, and client-side logic
+
+The View follows the principle of separation of concerns by:
+- Not containing any business logic (that's in the Model)
+- Not handling HTTP requests (that's in the Controller)
+- Focusing solely on how data is presented to the user
+-->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Flask MVC Tasks</title>
     <style>
+        /* View-specific styling */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -130,8 +145,10 @@
     </style>
 </head>
 <body>
+    <!-- Main container for the task management interface -->
     <div class="container">
         <h1>Task Manager</h1>
+        <!-- Task list section - displays tasks from the Model -->
         <ul class="task-list">
             {% for task in tasks %}
                 <li class="task-item {% if task.done %}done{% endif %}">
@@ -145,6 +162,7 @@
                 <li class="empty-state">No tasks! Add one to get started.</li>
             {% endfor %}
         </ul>
+        <!-- Task creation form - sends data to the Controller -->
         <form action="{{ url_for('add_task') }}" method="POST" class="task-form">
             <input type="text" name="title" placeholder="Enter a new task..." required>
             <button type="submit">Add Task</button>
