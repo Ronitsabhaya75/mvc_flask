@@ -2,6 +2,43 @@
 
 A simple task management application built with Flask following the MVC (Model-View-Controller) architectural pattern.
 
+![image](https://github.com/user-attachments/assets/df901938-7a67-4c17-9b0c-b4ffdc9f30c9)
+
+
+## Setup Instructions
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd flask_mvc_app
+```
+
+2. Create and activate a virtual environment:
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Run the application:
+```bash
+python app.py
+```
+
+5. Open your browser and navigate to:
+```
+http://127.0.0.1:5000
+```
+
 ## Features
 
 - View all tasks
@@ -50,39 +87,6 @@ flask_mvc_app/
   - POST /add: Create new task
   - GET /delete/<id>: Remove task
 
-## Setup Instructions
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd flask_mvc_app
-```
-
-2. Create and activate a virtual environment:
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-# Linux/Mac
-python3 -m venv venv
-source venv/bin/activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-4. Run the application:
-```bash
-python app.py
-```
-
-5. Open your browser and navigate to:
-```
-http://127.0.0.1:5000
-```
 
 ## Database
 
