@@ -21,7 +21,7 @@ venv\Scripts\activate
 
 # Linux/Mac
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activatesource venv/bin/activate
 ```
 
 3. Install dependencies:

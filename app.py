@@ -11,6 +11,12 @@ The Controller follows the principle of separation of concerns by:
 - Not containing any business logic (that's in the Model)
 - Not containing any presentation logic (that's in the View)
 - Only handling request/response flow and data coordination
+
+Added the new feature:
+- Toggle task completion status
+  - This feature allows users to mark tasks as completed or not completed.
+  - It updates the task's status in the database and refreshes the task list.
+  - This is done through a new route '/toggle/<task_id>' that changes the 'done' attribute of the Task model.
 """
 
 from flask import Flask, render_template, request, redirect, url_for
@@ -58,6 +64,14 @@ def delete_task(task_id):
     """
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+@app.route('/toggle/<int:task_id>')
+def toggle_task(task_id):
+    """Toggle task completion status"""
+    task = Task.query.get_or_404(task_id)
+    task.done = not task.done
     db.session.commit()
     return redirect(url_for('index'))
 

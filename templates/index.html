@@ -11,6 +11,10 @@ The View follows the principle of separation of concerns by:
 - Not containing any business logic (that's in the Model)
 - Not handling HTTP requests (that's in the Controller)
 - Focusing solely on how data is presented to the user
+
+Added the following features:
+- Task completion toggle with visual feedback
+
 -->
 <!DOCTYPE html>
 <html>
@@ -151,9 +155,21 @@ The View follows the principle of separation of concerns by:
         <!-- Task list section - displays tasks from the Model -->
         <ul class="task-list">
             {% for task in tasks %}
-                <li class="task-item {% if task.done %}done{% endif %}">
+                <!-- <li class="task-item {% if task.done %}done{% endif %}">
                     <div class="task-content">
                         <div class="task-title">{{ task.title }}</div>
+                        <div class="task-date">Created: {{ task.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+                    </div>
+                    <a href="{{ url_for('delete_task', task_id=task.id) }}" class="delete-btn">Delete</a>
+                </li> -->
+                <li class="task-item {% if task.done %}done{% endif %}">
+                    <div class="task-content">
+                        <div class="task-title">
+                            <a href="{{ url_for('toggle_task', task_id=task.id) }}" style="text-decoration: none; margin-right: 10px;">
+                                {% if task.done %}✓{% else %}○{% endif %}
+                            </a>
+                            {{ task.title }}
+                        </div>
                         <div class="task-date">Created: {{ task.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
                     </div>
                     <a href="{{ url_for('delete_task', task_id=task.id) }}" class="delete-btn">Delete</a>
